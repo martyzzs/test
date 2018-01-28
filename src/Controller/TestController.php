@@ -10,9 +10,10 @@ namespace App\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class TestController {
+class TestController extends AbstractController {
 
 	/**
 	 * @Route("/")
@@ -27,10 +28,9 @@ class TestController {
 	 */
 
 	public function test($slug){
-		return new Response(sprintf(
-			'%s',
-			$slug
-		));
+		return $this->render('test/test-start.html.twig',[
+			'title' => ucwords(str_replace('-',' ',$slug)),
+		]);
 	}
 
 }
