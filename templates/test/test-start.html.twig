@@ -1,5 +1,21 @@
 {% extends 'base.html.twig'%}
 
 {% block body %}
-    <h1>{{ title }}</h1>
+    <h1>Testa Uzdevums!</h1>
+    <form method="post" name="form-get-user">
+        <select name="tests">
+            <option value="1">Test 1</option>
+            <option value="2">Test 2</option>
+            <option value="3">Test 3</option>
+            <option value="4">Test 4</option>
+        </select>
+        <input type="text" placeholder="Ievadiet savu vārdu" name="name">
+        <input type="submit" value="Sākt">
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('test-start.js') }}"></script>
 {% endblock %}

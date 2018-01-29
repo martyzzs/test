@@ -1,0 +1,17 @@
+<div class="test-title">Test: {{ test }}</div>
+<div class="question">{{ question }}</div>
+<div class="answers">
+    {% for answer in answers %}
+        <div class="test-answer">{{ answer["answer"] }}</div>
+    {% endfor %}
+</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<form name="{{ test }}" method="post" class="question-form" data-questionNo="{{ questionNo }}">
+    <input name="answer" type="hidden">
+    <input name="name" value="{{ name }}", type="hidden">
+    <input name="test" value="{{ test }}", type="hidden">
+    <input type="submit" value="Nākamais">
+</form>
+
