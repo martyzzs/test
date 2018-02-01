@@ -1,0 +1,18 @@
+ Setup:
+  1. {composer install} in project dirrectory
+  2. Configure database:
+	2.1 In project root edit .env
+		DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name
+		(For me it was DATABASE_URL=mysql://root:root@127.0.0.1:3306/testdb but depends on setup)
+	2.2 run {
+		php bin/console doctrine:database:create
+		php bin/console doctrine:migrations:diff
+		php bin/console doctrine:migrations:migrate
+		} in proj. direct.
+ 
+  3.Izveidotajā datubāzē palaist datubāzes dump failu, kas atrodas šinī mapē, lai izveidotu starta datus.
+ 
+ Run your application:
+    1. Change to the project directory
+    2. Execute the {php -S 127.0.0.1:8000 -t public} command;
+    3. Browse to the http://localhost:8000/ URL.
