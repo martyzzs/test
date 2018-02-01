@@ -5,9 +5,11 @@
 		DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name
 		(For me it was DATABASE_URL=mysql://root:root@127.0.0.1:3306/testdb but depends on setup)
 	2.2 run {
+	
 		php bin/console doctrine:database:create
 		php bin/console doctrine:migrations:diff
 		php bin/console doctrine:migrations:migrate
+		
 		} in proj. direct.
  
   3.Izveidotajā datubāzē palaist datubāzes dump failu, kas atrodas šinī mapē, lai izveidotu starta datus.
@@ -16,3 +18,14 @@
     1. Change to the project directory
     2. Execute the {php -S 127.0.0.1:8000 -t public} command;
     3. Browse to the http://localhost:8000/ URL.
+	
+	
+Komentāri:
+	Par datubāzi esmu diezgan drošs, ka tabula user_question absolūti nav vajadzīga, pārpalikums no sākotnējām idejai,
+	kā šim piet. bet tā kā pabeidzot šo šobrīd ir 5 no rīta neriskēšu kaut ko saluzt pēdējā brīdī esot pusaizmidzis.
+	
+	Pierakstīju arī komentāros bet tā kā šim nav īsti nekādas reģistrācijas sistēmas, tad pieņemu ka lietotājvārds
+	ir unikāls un atkārtoti pildot testu ar to pašu vārdu datubāzē tiek laboti ieraksti pie ši lietotāja nevis veidoti jauni.
+	Reālā situācija būtu protams jāvadās pēc id.
+	
+	Tāpat funkcijām iekš lapas kontroliera prasītos diezgan pamatīge refactor, bet drusku pietrūka laika.
