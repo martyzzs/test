@@ -12,7 +12,7 @@
             </div>
         {% endfor %}
     </div>
-    <div class="progress col-md-6 offset-3">
+    <div class="progress col-md-6 offset-md-3">
         <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{ 100*(questionNo)/questions|length }}%" aria-valuenow="{{ 100*(questionNo)/questions|length }}" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <form name="{{ test }}" method="post" class="question-form" data-questionNo="{{ questionNo }}">
