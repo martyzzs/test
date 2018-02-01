@@ -1,0 +1,8 @@
+<div class="complete-msg">Paldies {{ name }}!</div>
+{% set correctAnswer = 0 %}
+{% for answer in answers %}
+    {% if(answer.getUserAnswer().getIsCorrect())     %}
+        {% set correctAnswer = correctAnswer + 1 %}
+    {%  endif %}
+{% endfor %}
+<div class="score">Tu atbildēji pareizi uz {{ correctAnswer }} no {{ answers|length }} jautājumiem.</div>

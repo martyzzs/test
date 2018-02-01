@@ -1,32 +1,55 @@
 $(document).ready(function(){
 
-    function getQuestion(test,name,questionNo){
-
-        if(!questionNo){
+    function getQuestion(test,name,testStage, answer, question, questionNo){
+        if(questionNo == null){
             questionNo = 0;
+        }else{
+            questionNo++;
         }
-        console.log(questionNo);
 
+        var questionNo = questionNo.toString();
         $.ajax({
             method:'POST',
-            url: test + '/start_test',
+            url: '/start_test',
             dataType: 'json',
-            data:{"name": name,"test": test, "questionNo":questionNo}
+            data:{"name": name,"test": test, "questionNo":questionNo, "testStage": testStage, "answer":answer, "question":question}
         }).done(function(data){
+            $(".error").remove();
 
-            $(".test-wrapper").html(data.content);
+            if(data.status === "success") {
+                $(".test-wrapper").html(data.content);
 
-            $(".question-form").submit(function(e){
-                e.preventDefault();
+                $(".question-form").submit(function (e) {
+                    e.preventDefault();
 
-                var name = $("input[name='name']").val();
-                var test =  $("input[name='test']").val();
-                var questionNo = $(".question-form").data('questionno');
+                    var name = $("input[name='name']").val();
+                    var test = $("input[name='test']").val();
+                    var testStage = $("input[name='testStage']").val();
+                    var questionNo = $(".question-form").data('questionno');
+                    var answer = $("input[name='answer']").val();
+                    var question = $("input[name='question']").val();
 
-                getQuestion(test,name,questionNo);
-            });
+                    getQuestion(test, name, testStage, answer, question, questionNo);
+                });
 
+                $(".test-answer").click(function () {
+                    var id = $(this).data('id');
+                    var answers = $(".test-answer");
 
+                    for (var i = 0; i < answers.length; i++) {
+                        $(answers[i]).removeClass('selected-answer')
+                    }
+                    $(this).addClass('selected-answer');
+
+                    $("input[name='answer']").val(id.toString());
+                });
+            }
+            else{
+                for(var i = 0; i < data.errors.length; i++){
+                    var field = $("input[name='"+data.errors[i].field+"']");
+                    field.after("<div class='error'>" + data.errors[i].msg + "</div>");
+                }
+            }
         });
     }
 
@@ -34,13 +57,10 @@ $(document).ready(function(){
         e.preventDefault();
         var name = $("input[name='name']").val();
         var test =  $("select[name='tests']").val();
+        var testStage = $("input[name='testStage']").val();
 
-        if(name.length > 3){
-           getQuestion(test,name);
-        }
-        else{
-            $("input[name='name']").addClass('error');
-        }
+        getQuestion(test,name, testStage);
+
     });
 });
 
