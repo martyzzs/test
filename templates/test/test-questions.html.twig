@@ -1,19 +1,31 @@
-<div class="test-title">{{ testName.getName() }}</div>
-<div class="question">{{ questions[questionNo].getQuestion() }}</div>
-<div class="answers">
-    {% for answer in questions[questionNo].answers %}
-        <div class="test-answer" data-id="{{ answer.getId() }}">{{ answer.getAnswer() }}</div>
-    {% endfor %}
+<div class="inner-content col-md-12">
+    <div class="title col-md-12">
+        <h1>{{ testName.getName() }}</h1>
+    </div>
+    <div class="question col-md-12 title">{{ questions[questionNo].getQuestion() }}</div>
+    <div class="answers row">
+        {% for answer in questions[questionNo].answers %}
+            <div class="test-answer col-md-6" data-id="{{ answer.getId() }}">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3 answer-box">{{ answer.getAnswer() }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="progress col-md-6 offset-3">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{ 100*(questionNo)/questions|length }}%" aria-valuenow="{{ 100*(questionNo)/questions|length }}" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <form name="{{ test }}" method="post" class="question-form" data-questionNo="{{ questionNo }}">
+        <div class="col-md-12 block">
+            <input name="answer" type="hidden">
+        </div>
+        <input name="question" type="hidden" value="{{ questions[questionNo].getId() }}">
+        <input name="name" value="{{ name }}", type="hidden">
+        <input name="test" value="{{ test }}", type="hidden">
+        <input type="hidden" value="questions", name="testStage">
+        <div class="col-md-12 block">
+            <button type="button" class="btn btn-outline-danger next-question">Nākamais</button>
+        </div>
+    </form>
 </div>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: {{ 100*(questionNo)/questions|length }}%" aria-valuenow="{{ 100*(questionNo)/questions|length }}" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-<form name="{{ test }}" method="post" class="question-form" data-questionNo="{{ questionNo }}">
-    <input name="answer" type="hidden">
-    <input name="question" type="hidden" value="{{ questions[questionNo].getId() }}">
-    <input name="name" value="{{ name }}", type="hidden">
-    <input name="test" value="{{ test }}", type="hidden">
-    <input type="hidden" value="questions", name="testStage">
-    <input type="submit" value="Nākamais">
-</form>
 

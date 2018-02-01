@@ -32,6 +32,10 @@ $(document).ready(function(){
                     getQuestion(test, name, testStage, answer, question, questionNo);
                 });
 
+                $("button.next-question").click(function(){
+                    $(".question-form").submit();
+                });
+
                 $(".test-answer").click(function () {
                     var id = $(this).data('id');
                     var answers = $(".test-answer");
@@ -62,6 +66,10 @@ $(document).ready(function(){
         getQuestion(test,name, testStage);
 
     });
+
+    $("button.user-submit").click(function(){
+        $("form[name='form-get-user']").submit();
+    })
 });
 
 

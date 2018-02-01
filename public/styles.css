@@ -1,0 +1,67 @@
+body, html {
+    height: 100%;
+    color: #031424;
+ }
+
+.test-wrapper {
+    height: 100%;
+    max-width: 1024px;
+    background-color: lightblue;
+    margin:auto;
+}
+
+.inner-content{
+    padding-top:100px;
+    padding-bottom:100px;
+}
+
+.title{
+    text-align: center;
+}
+
+.title mark{
+    background-color: transparent;
+    color: crimson;
+}
+
+.block{
+    padding:20px 0;
+    text-align: center;
+    margin:auto;
+}
+
+.question{
+    font-size: 24px;
+}
+
+.answers{
+    font-size: 18px;
+}
+
+.test-answer{
+    padding: 20px 0;
+}
+
+.answer-box{
+    height: 100px;
+    vertical-align: center;
+    text-align: center;
+    line-height: 100px;
+    background-color: crimson;
+    cursor: pointer;
+}
+.answer-box:hover{
+    opacity: .95;
+}
+
+.selected-answer .answer-box{
+    opacity: .80;
+}
+
+.progress{
+    padding: 0;
+}
+
+.score{
+    font-size: 20px;
+}

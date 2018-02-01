@@ -1,8 +1,17 @@
-<div class="complete-msg">Paldies {{ name }}!</div>
-{% set correctAnswer = 0 %}
-{% for answer in answers %}
-    {% if(answer.getUserAnswer().getIsCorrect())     %}
-        {% set correctAnswer = correctAnswer + 1 %}
-    {%  endif %}
-{% endfor %}
-<div class="score">Tu atbildēji pareizi uz {{ correctAnswer }} no {{ answers|length }} jautājumiem.</div>
+<div class="inner-content col-md-12">
+    <div class="col-md-12 title">
+        <h1>Paldies <mark>{{ name }}! </mark></h1>
+    </div>
+    {% set correctAnswer = 0 %}
+    {% for answer in answers %}
+        {% if(answer.getUserAnswer().getIsCorrect())     %}
+            {% set correctAnswer = correctAnswer + 1 %}
+        {%  endif %}
+    {% endfor %}
+    <div class="col-md-12 block">
+        <div class="score">Tu atbildēji pareizi uz {{ correctAnswer }} no {{ answers|length }} jautājumiem.</div>
+    </div>
+    <div class="col-md-12 block">
+        <a href="/"><button type="button" class="btn btn-outline-danger">Uz sākumu!</button></a>
+    </div>
+</div>

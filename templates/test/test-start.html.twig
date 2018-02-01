@@ -1,18 +1,30 @@
 {% extends 'base.html.twig'%}
 
 {% block body %}
-    <h1>Testa Uzdevums!</h1>
-    <form method="post" name="form-get-user">
-        <select name="tests">
+    <div class="col-md-12 inner-content">
+        <div class="col-md-12 title">
+            <h1>Testa Uzdevums!</h1>
+        </div>
+        <div class="col-md-12">
+            <form method="post" name="form-get-user">
+                <div class="col-md-12 block">
+                    <select class="custom-select" id="inputGroupSelect01" name="tests">
 
-            {% for test in tests %}
-                <option value="{{ test.id }}">{{ test.name }}</option>
-            {% endfor %}
-        </select>
-        <input type="text" placeholder="Ievadiet savu vārdu" name="name">
-        <input type="hidden" value="start", name="testStage">
-        <input type="submit" value="Sākt">
-    </form>
+                        {% for test in tests %}
+                            <option value="{{ test.id }}">{{ test.name }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                <div class="col-md-12 block">
+                        <input type="text" class="form-control" aria-label="Default" placeholder="Ievadiet savu vārdu" name="name" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <input type="hidden" value="start", name="testStage">
+                <div class="col-md-12 block">
+                    <button type="button" class="btn btn-outline-danger user-submit">Sākt</button>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
